@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "��#\u0000 \u0000d\u0000p\u0000l\u0000y\u0000 \u0000-\u0000 \u0000O\u0000n\u0000e\u0000 \u0000C\u0000o\u0000m\u0000m\u0000a\u0000n\u0000d\u0000 \u0000D\u0000e\u0000p\u0000l\u0000o\u0000y\u0000 \u0000C\u0000L\u0000I\u0000\r\u0000 \u0000",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": { "build": "tsc", "dev": "nodemon --exec ts-node src/cli.ts", "start": "node dist/cli.js" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Manish2001bro/dply-cli.git"
@@ -29,10 +27,13 @@
     "typescript": "^6.0.3"
   },
   "dependencies": {
+    "@types/inquirer": "^9.0.9",
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
+    "inquirer": "^13.4.2",
     "ora": "^9.4.0",
     "ssh2": "^1.17.0",
     "ssh2-sftp-client": "^12.1.1"
   }
 }
+
