@@ -68,7 +68,24 @@ export async function execCommandWithOutput(command: string): Promise<string> {
     });
   });
 }
-
+export async function execCommandStream(command: string, onData: (data: string) => void): Promise<void> {
+  const conn = await getConnection();
+  return new Promise((resolve, reject) => {
+    conn.exec(command, (err, stream) => {
+      if (err) return reject(err);
+      stream.on('data', (data: Buffer) => {
+        onData(data.toString());
+      });
+      stream.on('close', (code: number) => {
+        if (code === 0) resolve();
+        else reject(new Error(`Command failed with code ${code}`));
+      });
+      stream.stderr.on('data', (data: Buffer) => {
+        reject(data.toString());
+      });
+    });
+  });
+}
 export async function execCommand(command: string): Promise<void> {
   const conn = await getConnection();
   return new Promise((resolve, reject) => {

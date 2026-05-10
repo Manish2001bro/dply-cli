@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.testSSHConnection = testSSHConnection;
 exports.execCommandWithOutput = execCommandWithOutput;
+exports.execCommandStream = execCommandStream;
 exports.execCommand = execCommand;
 const ssh2_1 = require("ssh2");
 const fs_1 = __importDefault(require("fs"));
@@ -68,6 +69,27 @@ async function execCommandWithOutput(command) {
                     resolve(output.trim());
                 else
                     reject(new Error(`Command failed with code ${code}: ${output}`));
+            });
+            stream.stderr.on('data', (data) => {
+                reject(data.toString());
+            });
+        });
+    });
+}
+async function execCommandStream(command, onData) {
+    const conn = await getConnection();
+    return new Promise((resolve, reject) => {
+        conn.exec(command, (err, stream) => {
+            if (err)
+                return reject(err);
+            stream.on('data', (data) => {
+                onData(data.toString());
+            });
+            stream.on('close', (code) => {
+                if (code === 0)
+                    resolve();
+                else
+                    reject(new Error(`Command failed with code ${code}`));
             });
             stream.stderr.on('data', (data) => {
                 reject(data.toString());
