@@ -1,0 +1,38 @@
+{
+  "name": "dply-cli",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000d\u0000p\u0000l\u0000y\u0000 \u0000-\u0000 \u0000O\u0000n\u0000e\u0000 \u0000C\u0000o\u0000m\u0000m\u0000a\u0000n\u0000d\u0000 \u0000D\u0000e\u0000p\u0000l\u0000o\u0000y\u0000 \u0000C\u0000L\u0000I\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manish2001bro/dply-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Manish2001bro/dply-cli/issues"
+  },
+  "homepage": "https://github.com/Manish2001bro/dply-cli#readme",
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/node": "^25.6.2",
+    "@types/ora": "^3.1.0",
+    "@types/ssh2": "^1.15.5",
+    "@types/ssh2-sftp-client": "^9.0.6",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "ora": "^9.4.0",
+    "ssh2": "^1.17.0",
+    "ssh2-sftp-client": "^12.1.1"
+  }
+}
